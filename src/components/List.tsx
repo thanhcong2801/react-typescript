@@ -1,14 +1,23 @@
-import React from 'react'
-import "../css/List.css"
-const List = () => {
-    return (
-        <div className="list-container">
-            <h1>List</h1>
-            <div className="list-item-container">
-                Tu Tran - 30 - Badminton Player
-            </div>
-        </div>
-    )
-}
+import React from "react";
+import { IList } from "../common";
+import "../css/List.css";
 
-export default List
+const List = ({ people }: IList) => {
+  const renderList = (): JSX.Element[] => {
+    return people.map((person, index) => {
+      return (
+        <div className="list-item-container" key={person.name}>
+          {person.name} - {person.age} - {person.bio}
+        </div>
+      );
+    });
+  };
+  return (
+    <div className="list-container">
+      <h1>List</h1>
+      {renderList()}
+    </div>
+  );
+};
+
+export default List;
